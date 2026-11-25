@@ -35,13 +35,13 @@ int main()
     res = get_proc_count(&proc_count);
     if (res != 0)
     {
-        perror("Couldnt process count\n");
+        perror("Couldnt retrieve process count\n");
         return EXIT_FAILURE;
     }
 
     printf("CPU: %s", cpu_name);
 
-    printf("RAM: %" PRIu64 "GiB\n", mem_size_kib >> 20);
+    printf("RAM: %" PRIu64 "GB\n", mem_size_kib >> 20);
 
     printf("Processes: %zu\n", proc_count);
 
