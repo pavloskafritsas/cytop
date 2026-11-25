@@ -3,7 +3,22 @@
 #include <stdio.h>
 #include <string.h>
 
-int get_mem_info(uint64_t *mem_size_kib)
+int get_mem_usage(Mem_Usage *mem_usage)
+{
+    // TODO: retrieve the actual values
+
+    (*mem_usage).used = 10;
+
+    (*mem_usage).available = 20;
+
+    (*mem_usage).cached = 30;
+
+    (*mem_usage).free = 40;
+
+    return 0;
+}
+
+int get_mem_capacity(uint64_t *mem_size_kib)
 {
     const char *NEEDLE_MEM_TOTAL = "MemTotal";
 
@@ -26,7 +41,7 @@ int get_mem_info(uint64_t *mem_size_kib)
 
             if (colon != 0)
             {
-                if (sscanf(line + strlen(NEEDLE_MEM_TOTAL) + 1, "%llu", mem_size_kib) == 1)
+                if (sscanf(line + strlen(NEEDLE_MEM_TOTAL) + 1, "%lu", mem_size_kib) == 1)
                 {
                     break;
                 }
